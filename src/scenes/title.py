@@ -1,7 +1,8 @@
-from turtle import title
+from scenes.dress import DressScene
 from typing import List
 import pygame
 from components.gameobject import GameObject
+from components.soundmanager import SoundManager
 from scenes.scene import Scene
 from components.button import Button
 
@@ -35,12 +36,19 @@ class TitleScene(Scene):
 
         start_image_scale = 0.3
         himage_resized = (start_image.get_height() * start_image_scale)
+
+        def onClick():
+            self.sound_manager.play(SoundManager.CLICK)
+            sceneManager.load_scene(DressScene(sceneManager))
+
+
         start_button = Button(
             x = GameObject.get_wcenter(sceneManager.build_size, start_image.get_width(), start_image_scale),
             y = sceneManager.build_size[1] - himage_resized - 150,
             image = start_image,
             scale = start_image_scale
         )
+        start_button.onClick = onClick
 
         button_background = GameObject(
             x = start_button.rect.x - 20,
@@ -53,3 +61,5 @@ class TitleScene(Scene):
 
         return [start_button, button_background]
 
+    def __del__(self):
+        print("elminado")
