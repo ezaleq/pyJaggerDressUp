@@ -14,6 +14,12 @@ class GameObject(Sprite):
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
 
+    def get_wcenter(screen_size, width_image, scale = 1):
+        return (screen_size[0] / 2) - (width_image * scale / 2)
+
+    def get_hcenter():
+        pass
+
     def update(self, screen : Surface):
         self.draw(screen)
 

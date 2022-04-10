@@ -1,4 +1,5 @@
 from turtle import title
+from typing import List
 import pygame
 from components.gameobject import GameObject
 from scenes.scene import Scene
@@ -7,13 +8,48 @@ from components.button import Button
 class TitleScene(Scene):
     def __init__(self, sceneManager):
         super().__init__(sceneManager)
-        start_image = pygame.image.load("resources/interface/title/start.png")
+        start_button, button_background = self.load_button(sceneManager)
+        jagger_background = self.load_jaggerbg()
+        logo = self.load_logo(sceneManager, button_background.rect.y)
+
+        self.object_list.append(jagger_background)
+        self.object_list.append(start_button)
+        self.object_list.append(button_background)
+        self.object_list.append(logo)
+
+    def load_logo(self, sceneManager, ypos_start : int) -> GameObject:
+        logo_image = pygame.image.load("resources/interface/title/title logo.png")
+        return GameObject(
+            x = GameObject.get_wcenter(sceneManager.build_size, logo_image.get_width(), 0.3),
+            y = ypos_start - (logo_image.get_height() * 0.3) - 30,
+            image = logo_image,
+            scale = 0.3)
+
+    def load_jaggerbg(self) -> GameObject:
         titleDeco_image  = pygame.image.load("resources/interface/title/title deco.png")
+        return GameObject(0, 100, titleDeco_image, 0.3)
 
-        titleDeco_object = GameObject(0, 100, titleDeco_image, 0.2,)
-        startButton_object = Button(0, 0, start_image , 0.2)
+    def load_button(self, sceneManager) -> List[GameObject]:
+        start_image = pygame.image.load("resources/interface/title/start.png")
+        button_background_image = pygame.image.load("resources/interface/cuadrito.png")
 
-        self.object_list.append(titleDeco_object)
-        self.object_list.append(startButton_object)
+        start_image_scale = 0.3
+        himage_resized = (start_image.get_height() * start_image_scale)
+        start_button = Button(
+            x = GameObject.get_wcenter(sceneManager.build_size, start_image.get_width(), start_image_scale),
+            y = sceneManager.build_size[1] - himage_resized - 150,
+            image = start_image,
+            scale = start_image_scale
+        )
 
+        button_background = GameObject(
+            x = start_button.rect.x - 20,
+            y = start_button.rect.y - 20,
+            image = button_background_image,
+            scale = 1,
+            width = start_button.rect.width + 40,
+            height = start_button.rect.height + 40
+        )
+
+        return [start_button, button_background]
 

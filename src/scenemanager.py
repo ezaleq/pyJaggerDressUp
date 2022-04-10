@@ -16,7 +16,8 @@ class SceneManager:
         self._actualScene = scene
 
     def update(self, screen : Surface):
-        screen.blit(self._bg, (0,0))
-        self._actualScene.update(screen)
-        transformed_screen = pygame.transform.scale(screen, self.build_size)
-        screen.blit(transformed_screen, (0,0))
+        dummy = pygame.Surface(self.build_size)
+        dummy.blit(self._bg, (0,0))
+        self._actualScene.update(dummy)
+        resized = pygame.transform.scale(dummy, screen.get_size(), screen)
+        screen.blit(resized, (0,0))
