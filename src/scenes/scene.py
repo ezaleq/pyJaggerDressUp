@@ -14,7 +14,7 @@ class Scene:
         self.object_list.append(soundButton)
 
     def load_soundButton(self):
-        soundButton_image = pygame.image.load("resources/interface/sound/on.png")
+        soundButton_image = pygame.image.load("resources/interface/sound/on.png").convert_alpha()
         soundButton = GameObject(
             x = 10,
             y = 10,

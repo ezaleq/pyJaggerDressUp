@@ -18,7 +18,7 @@ class TitleScene(Scene):
         self.object_list.append(logo)
 
     def load_logo(self, sceneManager, ypos_start : int) -> GameObject:
-        logo_image = pygame.image.load("resources/interface/title/title logo.png")
+        logo_image = pygame.image.load("resources/interface/title/title logo.png").convert_alpha()
         return GameObject(
             x = GameObject.get_wcenter(sceneManager.build_size, logo_image.get_width(), 0.3),
             y = ypos_start - (logo_image.get_height() * 0.3) - 30,
@@ -26,12 +26,12 @@ class TitleScene(Scene):
             scale = 0.3)
 
     def load_jaggerbg(self) -> GameObject:
-        titleDeco_image  = pygame.image.load("resources/interface/title/title deco.png")
+        titleDeco_image  = pygame.image.load("resources/interface/title/title deco.png").convert_alpha()
         return GameObject(0, 100, titleDeco_image, 0.3)
 
     def load_button(self, sceneManager) -> List[GameObject]:
-        start_image = pygame.image.load("resources/interface/title/start.png")
-        button_background_image = pygame.image.load("resources/interface/cuadrito.png")
+        start_image = pygame.image.load("resources/interface/title/start.png").convert_alpha()
+        button_background_image = pygame.image.load("resources/interface/cuadrito.png").convert_alpha()
 
         start_image_scale = 0.3
         himage_resized = (start_image.get_height() * start_image_scale)
