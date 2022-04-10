@@ -1,17 +1,14 @@
 from pygame import Surface
 
 from components.gameobject import GameObject
-from typing import List
+from typing import List, Tuple
 
 
 class Scene:
-    screen : Surface
     object_list : List[GameObject] = []
-
     def __init__(self, sceneManager):
         self._sceneManager = sceneManager
-        self.screen = sceneManager._screen
 
-    def update(self):
+    def update(self, screen : Surface):
         for object in self.object_list:
-            object.update()
+            object.update(screen)
