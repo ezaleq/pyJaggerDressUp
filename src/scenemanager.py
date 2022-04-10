@@ -1,7 +1,7 @@
 from typing import Tuple
-from pygame import BLEND_RGB_SUB, Surface
+from pygame import Surface
 import pygame
-from components.soundmanager import SoundManager
+from soundmanager import SoundManager
 import scenes.scene as scene
 from scenes.title import TitleScene
 

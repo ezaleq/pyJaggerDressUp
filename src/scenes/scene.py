@@ -5,7 +5,7 @@ import pygame
 from components.gameobject import GameObject
 from typing import List
 
-from components.soundmanager import SoundManager
+from soundmanager import SoundManager
 
 class Scene:
     object_list : List[GameObject] = []
@@ -42,5 +42,5 @@ class Scene:
         return soundButton
 
     def update(self, screen : Surface):
-        for object in self.object_list:
+        for object in sorted(self.object_list, key=lambda x: x.layer):
             object.update(screen)

@@ -2,7 +2,7 @@ from scenes.dress import DressScene
 from typing import List
 import pygame
 from components.gameobject import GameObject
-from components.soundmanager import SoundManager
+from soundmanager import SoundManager
 from scenes.scene import Scene
 from components.button import Button
 
