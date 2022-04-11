@@ -16,7 +16,7 @@ class SoundManager:
             "bgmusic" : pygame.mixer.Sound(path.format(sound="bgmusic.wav")),
             "reset" : pygame.mixer.Sound(path.format(sound="reset.wav")),
         }
-        self.sounds[SoundManager.MUSIC].play(-1)
+        # self.sounds[SoundManager.MUSIC].play(-1)
 
     def play(self, sound : str):
         if self.muted or (sound not in self.sounds):

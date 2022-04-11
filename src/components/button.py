@@ -5,6 +5,7 @@ class Button(GameObject):
     pass
 
     def listen_event(self, event):
+        GameObject.listen_event(self, event)
         if event.type == pygame.MOUSEBUTTONUP:
             pos = pygame.mouse.get_pos()
             if self.rect.collidepoint(pos):

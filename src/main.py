@@ -11,11 +11,9 @@ icon = pygame.image.load("resources/interface/icon.png").convert_alpha()
 bg = pygame.image.load("resources/interface/fondo.png").convert()
 pygame.display.set_icon(icon)
 sceneManager = SceneManager(build_size, bg)
-clock = pygame.time.Clock()
 
 while True:
     pygame.display.update()
-    clock.tick(100)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()

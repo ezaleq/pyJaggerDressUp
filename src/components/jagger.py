@@ -7,15 +7,15 @@ from components.gameobject import GameObject
 
 class ClothLayer(GameObject):
     category_name : str = ""
-    def __init__(self, x : int, y : int, width : int, height : int, category : str, layer : int):
-        super().__init__(x, y, None, 1, width, height, layer)
+    def __init__(self, x : int, y : int, width : int, height : int, category : str, layer : int, outline = False, position=False):
+        super().__init__(x, y, None, 1, width, height, layer, outline, position)
         self.category_name = category
 
 class Jagger(GameObject):
     cloth_layers : List[ClothLayer] = []
-    def __init__(self, x : int, y : int, scale : int, object_list : List[GameObject] , width = None, height = None):
+    def __init__(self, x : int, y : int, scale : int, object_list : List[GameObject] , width = None, height = None, outline = False, position=False):
         jagger_image = pygame.image.load('resources/interface/jagger/base.png').convert_alpha()
-        GameObject.__init__(self, x, y, jagger_image, scale, width, height, 1)
+        GameObject.__init__(self, x, y, jagger_image, scale, width, height, 1, outline=outline, position=position)
         self.load_layers(x, y, object_list)
 
     def load_layers(self, x : int, y : int, object_list : List[GameObject]):
